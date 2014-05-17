@@ -9,6 +9,7 @@ else
 fi
 
 curl -s "https://github.com/$user" > ${user}.html
+sed -i 's|https://assets-cdn.github.com||' ${user}.html
 
 if [ ! -e index.html ] ; then
     ln -s ${user}.html index.html
