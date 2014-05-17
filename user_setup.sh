@@ -15,5 +15,5 @@ if [ ! -e index.html ] ; then
     ln -s ${user}.html index.html
 fi
 
-./asset_setup.sh $user
+../asset_setup.sh $user
 
