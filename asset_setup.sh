@@ -15,6 +15,7 @@ function download () {
     else
         echo "Downloading $asset"
         curl -s "https://assets-cdn.github.com/assets/$asset" > assets/$asset
+        js-beautify -o assets/$asset assets/$asset
     fi
 }
 

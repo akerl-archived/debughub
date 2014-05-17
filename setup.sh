@@ -22,5 +22,15 @@ else
     exit 1
 fi
 
+if [ -z "$(pacman -Qq python-pip 2>/dev/null)" ] ; then
+    echo "Installing Python"
+    pacman -Syu --needed --noconfirm python-pip &>/dev/null
+fi
+
+if [ -z "$(pip list | grep jsbeautifier)" ] ; then
+    echo "Installing jsbeautifier"
+    pip install six jsbeautifier &>/dev/null
+fi
+
 ./user_setup.sh
 
