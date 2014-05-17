@@ -1,4 +1,4 @@
-FakeHub
+DebugHub
 =========
 
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
@@ -16,7 +16,7 @@ You can modify the javascript files to help diagnose how things are happening
 ## Installation
 
 ```
-git clone git://github.com/akerl/fakehub
+git clone git://github.com/akerl/debughub
 ```
 
 ## License
