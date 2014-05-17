@@ -14,8 +14,10 @@ function download () {
         echo "Resource already retrieved: $path"
     else
         echo "Downloading $asset"
-        curl -s "https://assets-cdn.github.com/assets/$asset" > assets/$asset
-        js-beautify -o assets/$asset assets/$asset
+        curl -s "https://assets-cdn.github.com/assets/$asset" > assets/$asset.tmp
+        if [ -n "$(echo ${asset##*.} | grep -e css -e js)" ] ; then
+            js-beautify -o assets/$asset assets/${asset}.tmp
+        fi
     fi
 }
 
@@ -23,9 +25,7 @@ for path in $(curl -s "https://github.com/$user" | grep -e '\.js' -e '\.css' | s
     download $path
 done
 
-for font in svg ttf woff; do
-    for path in $(grep 'octicons' assets/github-*.css | sed -r "s/.*(octicons)-([a-f0-9]*)\.($font).*/\1-\2.\3/") ; do
-        download $path
-    done
+for path in $(sed -r "s/.*(octicons)-([a-f0-9]*)\.(woff|svg|ttf|eot).*/\1-\2.\3/g" assets/github*.css | grep '^octicon') ; do
+    download $path
 done
 
