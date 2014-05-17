@@ -15,7 +15,7 @@ function download () {
     else
         echo "Downloading $asset"
         curl -s "https://assets-cdn.github.com/assets/$asset" > assets/$asset.tmp
-        if [ -n "$(echo ${asset##*.} | grep -e css -e js)" ] ; then
+        if [ "${asset##*.}" == "js" ] ; then
             js-beautify -o assets/$asset assets/${asset}.tmp
         else
             mv assets/$asset.tmp assets/$asset
