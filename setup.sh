@@ -14,3 +14,5 @@ cp nginx.conf /etc/nginx/nginx.conf
 sed -i "s|FAKEHUB_ROOT|$(pwd)/src|" /etc/nginx/nginx.conf
 systemctl restart nginx
 
+./user_setup.sh
+
