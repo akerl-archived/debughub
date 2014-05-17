@@ -9,8 +9,6 @@ function download () {
     curl -s "https://assets-cdn.github.com/assets/$asset" > assets/$asset
 }
 
-curl -s "https://assets-cdn.github.com/images/spinners/octocat-spinner-128.gif" > images/spinners/octocat-spinner-128.gif
-
 for path in $(curl -s "https://github.com/akerl" | grep -e '\.js' -e '\.css' | sed -r 's/.*(github|github2|frameworks)-([a-f0-9]*)\.(css|js).*/\1-\2.\3/') ; do
     download $path
 done
