@@ -27,7 +27,9 @@ for path in $(curl -s "https://github.com/$user" | grep -e '\.js' -e '\.css' | s
     download $path
 done
 
-for path in $(sed -r "s/.*(octicons)-([a-f0-9]*)\.(woff|svg|ttf|eot).*/\1-\2.\3/g" assets/github*.css | grep '^octicon') ; do
-    download $path
+for font in svg ttf woff; do
+    for path in $(grep 'octicons' assets/github-*.css | sed -r "s/.*(octicons)-([a-f0-9]*)\.($font).*/\1-\2.\3/") ; do
+        download $path
+    done
 done
 
