@@ -1,3 +1,5 @@
+**Inactive Project**: GitHub used to generate their SVGs client-side in JS, which let me [reverse-engineer the scoring algorithm](http://blog.akerl.org/2014/12/19/reverse-engineering-github-streaks/). Unfortunately, they now generate the SVG on the backend, so this debugging tool is not really very helpful anymore.
+
 DebugHub
 =========
 
